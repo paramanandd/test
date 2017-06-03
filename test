@@ -1,2 +1,180 @@
 http://info.aquasec.com/e1t/c/*W7yp3Jy5VywlVW4sB3jT7ZMKFj0/*VDdVQ45yywXhW5gfdj54Wcqtl0/5/f18dQhb0SnGT9hxW0WW8RX7Gm4mQf6dW7gs6DY3xgwm7W3xQCNw5-VBlWW7WM-gw6Wp5-cW2fLgtT1M76WVW24ZwfS1mvBp_W1vks5F1V--c6W2gLqPv2ZwylVW72sFXQ2vx9WCW7SSRrz72vYg1W6MzpGl3qS5M8W20_Z7m6JknFhW2fZRMJ3CnMZVW4L5TVh45QCmJW2nF7F55qKyWwW33MTR95KxXB6W5KDCtZ12tDk8W5mjbCC5mfK7SW8B1Hpp5F_2JdW3Ykd0m5B52gKW1v3hGt3bPyFLW3BJL_d2tk5vHW2z_scn6x2RKSW5-lMJc5sSp7RW2B39_n4wZJlGW3z2X9j5FG_6DW4J39YS49PjRwW5dXtz-2J36wdW3jN5dV6f-N6lW2HXtrw4JMC1nW68PdxW5CG1HVVD9zzF2x9XgKW41RD7W87vCqJVPcHpM42hhx2W8d_1dy2xZGM1W4KP5BH1VtdWZN2NjCwvVR6H2W4q1sj178Qh2wMHpLpkJp5DCN12n7cJJ7Pw3VvjX4n2GD9PDW47HdmV9c4rTGN91Zyl9MVTljW46yxM_3w5ztyW5rbkBb7rY50KMmRw0WdXyXbV1pZJS86_LGb103
 http://info.aquasec.com/e1t/c/*W7yp3Jy5VywlVW4sB3jT7ZMKFj0/*W1CYxHk1X7S40W62bMWC2HhlGr0/5/f18dQhb0S9r99hxW0WW8RX7Gm4mQf6dW7gs6DY3xgwm7W3xQCNw5-VBlWW7WM-gw6Wp5-cW2fLgtT1M76WVW24ZwfS1mvBp_W1vks5F1V--c6W2gLqPv2ZwylVW72sFXQ2vx9WCW7SSRrz72vYg1W6MzpGl3qS5M8W20_Z7m6JknFhW2fZRMJ3CnMZVW4L5TVh45QCmJW2nF7F55qKyWwW33MTR95KxXB6W5KDCtZ12tDk8W5mjbCC5mfK7SW8B1Hpp5F_2JdW3Ykd0m5B52gKW1v3hGt3bPyFLW3BJL_d2tk5vHW2z_scn6x2RKSW5-lMJc5tl57cW2yk6QH5ksmlGW5dVSgn4msXtWW5fbtsx2nWBH-W6RdLQs5y8WnGW4wb6Q_3Y2ylRW3bpCxP2V9yXSW3JST8X2MyWPKW6Stmdl2zMc51W41SB842WYKX6W482_Sh41K3sxW49_XLM5dSjtFW3l09ZM82G-VBN8ySq6FfTlLHV1KsVy1K70FWW5Z8r-06WsCddVMwvdl615B24N2y8h8KsjV00W5XTscS2fx_JYN8ZlrykXmRPkW9lSjgb7XxbkrVJ59zQ63NZ0FW3y19vM3wMXFCTT4DP1k_Jy6103
+	git push -u <remote_name> <local_branch_name>
+This command will push the local repo branch under <local_branc_name> to the remote repo at <remote_name>.
+	git config --global user.name <name>
+	git config --local user.email <email>
+	git config --global alias.<alias-name> <git-command>
+	git config --global alias.ci commit
+	git config --global core.editor vim
+
+
+	git init --bare <directory>
+	git init <directory> --template=<template_directory>
+Initializes a new Git repository and copies files from the <template_directory> into the repository.
+	git clone ssh://john@example.com/path/to/my-project.git
+The first command initializes a new Git repository in the my-project folder on your local machine and populates it with the contents of the central repository.
+	git clone <repo> <directory> Clone the repository located at <repo> into the folder called ~<directory>! on the local machine.
+	git clone -branch <tag> <repo> Clone the repository located at <repo> and only clone the ref for <tag>.
+	git clone -depth=1 <repo> 
+	git clone -branch new_feature git://remoterepository.git would clone only the new_feature branch from the remote Git repository. 
+	git clone –bare    Similar to git init --bare, when the -bare argument is passed to git clone, a copy of the remote repository will be made with an omitted working directory. This means that a repository will be set up with the history of the project that can be pushed and pulled from, but cannot be edited directly. In addition, no remote branches for the repo will be configured with the -bare repository. Like git init --bare, this is used to create a hosted repository that developers will not edit directly. 
+	git clone –mirror  Passing the --mirror argument implicitly passes the --bare argument as well. This means the behavior of --bare is inherited by --mirror. Resulting in a bare repo with no editable working files. In addition, --mirror will clone all the extended refs of the remote repository, and maintain remote branch tracking configuration. You can then run git remote update on the mirror and it will overwrite all refs from the origin repo. Giving you exact 'mirrored' functionality. 
+	git clone --template=<template_directory> <repo location> Clones the repo at <repo location> and applies the template from <template directory> to the newly created local branch.
+	git stash
+	git stash pop
+	git stash apply reapply the changes to your working copy and keep them in your stash with git stash apply 
+	git stash –u Adding the -u option (or --include-untracked) tells git stash to also stash your untracked files
+	git stash –a  You can include changes to ignored files as well by passing the -a option (or --all) when running git stash.
+	git stash list
+	git stash pop stash@{2} You can choose which stash to re-apply by passing its identifier as the last argument 
+	git stash show view a summary of a stash 
+	git stash branch add-style stash@{1}create the branch from stash
+	git stash drop stash@{1}  you no longer need a particular stash, you can delete it
+	git stash clear delete all of your stashes
+	git log --oneline --graph stash@{0}
+
+
+	git add -f debug.log forcefully commit  the ignored  file
+	git log -n <limit> Limit the number of commits by <limit>
+	git log --oneline Condense each commit to a single line
+	git log –stat Along with the ordinary git log information, include which files were altered and the relative number of lines that were added or deleted from each of them.
+	git log –p most detailed view you can have of your project history
+	git log --grep="<pattern>"
+	git log <since>..<until>
+	git log <file> display commits that include the specified file
+	git log --graph --decorate –oneline --graph flag that will draw a text based graph of the commits on the left hand side of the commit messages. --decorate adds the names of branches or tags of the commits that are shown. --oneline shows the commit information on a single line making it easier to browse
+	git checkout master Return to the master branch
+	git checkout <commit> <file> Check out a previous version of a file
+	git checkout <commit> Update all files in the working directory to match the specified commit
+
+	git reset <file> Remove the specified file from the staging area
+	git reset Reset the staging area to match the most recent commit
+	git reset –hard Reset the staging area and the working directory to match the most recent commit
+	git reset <commit>Move the current branch tip backward to <commit>
+	git reset --hard <commit> Move the current branch tip backward to <commit> and reset both the staging area and the working directory to match
+	git clean –n Perform a “dry run” of git clean. This will show you which files are going to be removed without actually doing it
+	git clean –f Remove untracked files from the current directory. The -f (force) flag is required unless the clean.requireForce configuration option is set to false (it's true by default). This will not remove untracked folders or files specified by .gitignore.
+	git clean -f <path> Remove untracked files, but limit the operation to the specified path.
+	git clean –df Remove untracked files and untracked directories from the current directory.
+	git clean –xf Remove untracked files from the current directory as well as any files that Git usually ignores.
+	git rebase <base> Rebase the current branch onto <base>, which can be any kind of commit reference (an ID, a branch name, a tag, or a relative reference to HEAD).
+
+	git reflog Show the reflog for the local repository 
+
+	git remote List the remote connections you have to other repositories.
+
+	git remote –v Same as the above command, but include the URL of each connection.
+
+	git remote add <name> <url> Create a new connection to a remote repository. After adding a remote, you’ll be able to use <name> as a convenient shortcut for <url> in other Git commands.
+
+	git remote rm <name> Remove the connection to the remote repository called <name>.
+
+	git remote rename <old-name> <new-name> Rename a remote connection from <old-name> to <new-name>.
+
+
+	git fetch <remote>Fetch all of the branches from the repository. This also downloads all of the required commits and files from the other repository.
+	git fetch <remote> <branch> Same as the above command, but only fetch the specified branch.
+	git pull <remote> Fetch the specified remote’s copy of the current branch and immediately merge it into the local copy. This is the same as git fetch <remote> followed by git merge origin/<current-branch>.
+	git pull --rebase <remote>Same as the above command, but instead of using git merge to integrate the remote branch with the local one, use git rebase.
+	git push <remote> <branch> Push the specified branch to <remote>, along with all of the necessary commits and internal objects
+	git push <remote> --force Same as the above command, but force the push even if it results in a non-fast-forward merge
+	git push <remote> --allPush all of your local branches to the specified remote.
+	git push <remote> --tags Tags are not automatically pushed when you push a branch or use the --all option. The --tags flag sends all of your local tags to the remote repository
+
+	git branch List all of the branches in your repository.
+	git branch <branch>Create a new branch called <branch>. This does not check out the new branch.
+	git branch -d <branch>Delete the specified branch. This is a “safe” operation in that Git prevents you from deleting the branch if it has unmerged changes.
+	git branch -D <branch>Force delete the specified branch, even if it has unmerged changes. This is the command to use if you want to permanently throw away all of the commits associated with a particular line of development.
+	git branch -m <branch>Rename the current branch to <branch>.
+	git checkout <existing-branch>Check out the specified branch, which should have already been created with git branch. This makes <existing-branch> the current branch, and updates the working directory to match.
+	git checkout -b <new-branch>Create and check out <new-branch>. The -b option is a convenience flag that tells Git to run git branch <new-branch> before running git checkout <new-branch>. git checkout -b <new-branch> <existing-branch>
+	git merge <branch>Merge the specified branch into the current branch. Git will determine the merge algorithm automatically (discussed below).
+	git merge --no-ff <branch>Merge the specified branch into the current branch, but always generate a merge commit (even if it was a fast-forward merge). This is useful for documenting all merges that occur in your repository.
+
+
+
+
+
+Init
+•	git init vs git clone
+•	git init –bare <Directory>
+•	git init <Directory>  --template=<Directory>
+•	--QUIET only prints critical level messages
+•	--SEPARATE-GIT-DIR=<GIT DIR>
+
+Clone
+•	Cloning to specific folder
+•	Cloning specific tag
+•	Git clone --mirror vs git clone –bare
+•	Git clone --template=<Directory>  repo
+•	Git protocols  :ssh, git, http
+
+Config
+•	Git config levels and files:-    local:.git/config, global:<userdir>/.gitconfig, system: C:\ProgramData\Git\config  or /etc/gitconfig 
+•	Aliases  git config --global alias.ci commit
+
+Saving Changes
+•	Add
+•	Commit
+•	Snapshots so git is fast
+•	Stash     -u: includes untracked files also and –a includes ignored files too
+•	.gitignore    personal git ignore rules .git/info/exclude not versioned and not distributed over repo global git ignore rules core.excludesFile  
+
+Inspecting repository
+•	Git Status
+•	Git log –n limit, --oneline, --graph, --stat, -p, --decorate,-author, since..until, grep, master..feature “commits in feature bt not in master”.
+
+Undoing changes
+•	Checkout  checking out to branches, commits, files
+•	Detached head state- when head points to particular commit rather than branch
+•	Git revert : can get changes later
+•	Git reset: can’t get changes later,  reset to commit, to file, --hard
+•	Revert vs reset
+•	Clean : removes untracked files from working directory, -n “dry run”, -f “ignored files too”, from path too, -df “for  directories”
+Rewriting history
+•	Amend : lets u combine staged changes in previous commit instead of new commit, never amend public repo
+•	Git rebase
+•	Reflog : contains info abt old stage of branches and allows u to move to that stage, --relative-date 
+Synching
+•	Git Remote
+•	Git fetch  : git branch -r  to view all remote branches, these are read only and puts u in detached head state
+•	Git pull : fetch + merge ,  pulling via rebase: --rebase or git config --global branch.autosetuprebase always
+•	git push:  --force forcefully push the changes from local discarding the upstream changes previously pushed or you can pull the changes and then push,  --all to push all the branches, --tags to push all tags reference
+pull request
+•	for different workflows
+using branches
+•	git branch : -d delete branch, -D force delete even unmerged,-m rename
+•	git checkout : git checkout HEAD~2 goes to grandparent commit
+•	git merge : fast forward merge and non-fast forward merge
+•	fast-forward vs 3-way merge
+Workflows
+•	centralized:  only one master branch at remote, cannot push with 3-way merge you need to pull then rebase and then push to remote master.
+•	feature branch: different feature branches for every feature, pull request for merging the code into the master.
+•	Gitflow:  master branch integration develop branch for feature branches and release and hotfix branch etc.
+•	Forking
+Advance tips
+•	Merging vs rebasing
+•	Reset vs checkout vs revert
+•	Log filter: --no-merges- does not show merge commits, --merges shows only merge commits
+Git Hooks
+•	Client side hooks
+o	Pre-commit : Checks whether this alter code functionality
+o	Prepare-commit-message: changes the already created commit message
+o	Commit-message: to check message entered stands to adhered standards
+o	Post-commit: for notification purpose
+o	Post-checkout: nice for clearing out working directory
+o	Pre-rebase: called before git rebase to check it will not cause any damage
+•	Server side hooks
+o	Pre-receive : executed every time someone pushed the code
+o	Update:  same as above but it’s called for every reference it was mentioned.
+o	Post-receive : For notifying after receiving.
+Refs and reflog
+•	Hashes
+•	Refs:  heads and tags
+•	Packed refs:  creation of packed-ref file in .git after garbage collection and refs directory gets clear.
+•	Special refs: HEAD currently checkout branch, FETCHED_HEAD most recently fetched branch, ORIG_HEAD head before drastic changes, MERGE_HEAD commits that u r merging with current branch, CHERRY_PICK_HEAD commit u r cherrypicking
+•	Refspec : allows to manage remote branches using local git commands.
+•	Relative refs : ~ sign used to show first parent, to follow different parent use sign ^
+•	Reflog:  maintains the every change you made to the local repository.
+•	Git LFS: Entire history is transferred to client during cloning, git LFS helps by downloading whole history lazily during checkout, this is done with the help of pointer files these are not visible and managed by git lfs.
